@@ -3,10 +3,23 @@
 /* Controllers */
 
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+function plannerController($scope) {
+  $scope.stats = {"cost": "implement me"};
+  $scope.milestones = [
+    {
+      "name": "inception",
+      "cost": 123,
+      "tasks":[
+      {
+        "name": "project management"
+      },{
+        "name": "proposal"
+      }]
+    }];
+  $scope.newMilestone = function() {
+    $scope.milestones.push({ "name": $scope.newMilestoneName });
+    $scope.newMilestoneName = "";
+  };
 
-
-function MyCtrl2() {
+  window.milestones = $scope.milestones;
 }
-MyCtrl2.$inject = [];

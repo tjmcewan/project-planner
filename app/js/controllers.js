@@ -11,7 +11,21 @@ function plannerController($scope) {
       "cost": 123,
       "tasks":[
       {
-        "name": "project management"
+        "name": "project management",
+        "assignees": [{
+          "name": "joe bloggs",
+          "hours": 12
+        },{
+          "name": "jane bloggs",
+          "hours": 14
+        }],
+        "disbursements": [{
+          "name": "airfare",
+          "amount": 456
+        },{
+          "name": "taxi",
+          "amount": 35
+        }]
       },{
         "name": "proposal"
       }]

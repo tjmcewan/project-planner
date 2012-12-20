@@ -1,4 +1,4 @@
-<!doctype html>
+  <!doctype html>
 <html lang="en" ng-app="planner">
 
     <head>
@@ -8,27 +8,20 @@
         <link rel="stylesheet" href="css/app.css" />
     </head>
 
-    <body ng-controller="plannerController">
+    <body ng-controller="PlannerController">
         <h1>
             Project Planner
         </h1>
-        <!-- <p>Total cost: {{stats.cost}}</p> -->
-        <!--
-        <form ng-submit="newMilestone()">
-          <input ng-model="newMilestoneName">
-          <button type="submit">new milestone</button>
-        </form>
-         -->
         <div class="row">
             <div class="six columns">
                 <form>
-                    <textarea rows="20" ng-directive="quickEntry"></textarea>
+                    <textarea rows="20" quick-entry></textarea>
                 </form>
             </div>
 
             <div class="six columns">
                 <ol class="milestones">
-                    <li ng-repeat="milestone in milestones">
+                    <li ng-repeat="milestone in plan.milestones">
                         <h3>{{milestone.name}} - {{milestone.cost}}</h3>
 
                         <ol class="tasks">

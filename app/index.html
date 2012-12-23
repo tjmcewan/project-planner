@@ -6,23 +6,35 @@
         <title>Project Planner</title>
         <link rel="stylesheet" href="css/foundation.css" />
         <link rel="stylesheet" href="css/app.css" />
+        <style>[ng-cloak] {display: none}</style>
     </head>
 
     <body ng-controller="PlannerController">
         <div class="row">
-          <h1>Project Planner</h1>
-          <button ng-click="planSave()">save to browser</button>
-          <button ng-click="resetToDefault()">reset to default</button>
-          <button ng-click="cleanSlate()">clean the slate</button>
+          <div class="left">
+            <h1>Planner - {{plan.name}}</h1>
+
+            <form ng-submit="newMilestone()">
+              <input ng-model="newMilestoneName">
+              <button type="submit">new milestone</button>
+            </form>
+          </div>
+
+          <div  class="right">
+            <button ng-click="planSave()">save to browser</button>
+            <button ng-click="resetToDefault()">reset to default</button>
+            <button ng-click="cleanSlate()">clean the slate</button>
+          </div>
         </div>
         <div class="row">
             <div class="six columns">
                 <form>
-                    <textarea rows="20" ng-model="plan"></textarea>
+                    <textarea rows="8" quick-entry ng-model="quickEntryModel">{{quickEntryModel}}</textarea>
                 </form>
             </div>
 
-            <div class="six columns">
+            <div class="six columns" ng-cloak>
+              <textarea rows="8" ng-model="quickEntryModel2">{{quickEntryModel2}}</textarea>
                 <ol class="milestones">
                     <li ng-repeat="milestone in plan.milestones">
                         <h3>{{milestone.name}} - {{milestone.cost}}</h3>
@@ -58,8 +70,9 @@
                         </ol>
                     </li>
                 </ol>
-            </div>
+             </div>
         </div>
+ <div>{{quickEntryModel}}</div>
 
 
         <script src="lib/angular/angular.js"></script>

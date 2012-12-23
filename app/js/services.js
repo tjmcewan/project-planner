@@ -14,7 +14,7 @@ planner.factory( 'planStorage', function() {
   };
 });
 
-// planner.factory('forEachLine', function forEachLine(textarea, func) {
+// planner.factory('forEachLine', function (textarea, func) {
 //   var lines = textarea.value.replace(/\r\n/g, "\n").split("\n");
 //   var newLines, i;
 

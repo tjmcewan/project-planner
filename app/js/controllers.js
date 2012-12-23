@@ -23,6 +23,11 @@ planner.controller('PlannerController', function PlannerController($scope, planS
         }]
     };
 
+    $scope.newMilestone = function() {
+      $scope.plan.milestones.push({ "name": $scope.newMilestoneName });
+      $scope.newMilestoneName = "";
+    };
+
     $scope.planSave = function() {
         planStorage.put($scope.plan);
     };
@@ -32,14 +37,9 @@ planner.controller('PlannerController', function PlannerController($scope, planS
     };
 
     $scope.cleanSlate = function () {
-        $scope.plan = {};
+        $scope.plan = {name: "empty", milestones: []};
     };
 
-    // $scope.plan_as_string = JSON.stringify($scope.plan);
-
-    $scope.plan = plan || defaultPlan;
-
-    console.log(plan);
-    console.log(defaultPlan);
+    $scope.plan = plan.hasOwnProperty('milestones') ? plan : defaultPlan;
 
 });

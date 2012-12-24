@@ -42,4 +42,17 @@ planner.controller('PlannerController', function PlannerController($scope, planS
 
     $scope.plan = plan.hasOwnProperty('milestones') ? plan : defaultPlan;
 
+    $scope.quickEntryModel = plan.hasOwnProperty('milestones') ? yamlerise(plan) : plan;
+
 });
+
+function yamlerise(plan) {
+  return plan.milestones.map(function(milestone) {
+    if (milestone.hasOwnProperty('tasks')) {
+      var taskNames = milestone.tasks.map(function(task) {
+        return "    " + task.name;
+      }).join("\n");
+      return [milestone.name, taskNames].join("\n")
+    }
+  }).join("\n");
+};

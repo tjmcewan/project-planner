@@ -29,15 +29,14 @@
         <div class="row">
             <div class="six columns">
                 <form>
-                    <textarea rows="8" quick-entry ng-model="quickEntryModel">{{quickEntryModel}}</textarea>
+                    <textarea rows="20" key-capture quick-entry ng-model="quickEntryModel">{{quickEntryModel}}</textarea>
                 </form>
             </div>
 
             <div class="six columns" ng-cloak>
-              <textarea rows="8" ng-model="quickEntryModel2">{{quickEntryModel2}}</textarea>
                 <ol class="milestones">
                     <li ng-repeat="milestone in plan.milestones">
-                        <h3>{{milestone.name}} - {{milestone.cost}}</h3>
+                        <h3>{{milestone.name}}</h3> <!--  - {{milestone.cost}}</h3> -->
 
                         <ol class="tasks">
                             <li ng-repeat="task in milestone.tasks">
@@ -72,7 +71,6 @@
                 </ol>
              </div>
         </div>
- <div>{{quickEntryModel}}</div>
 
 
         <script src="lib/angular/angular.js"></script>

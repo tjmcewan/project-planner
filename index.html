@@ -1,0 +1,84 @@
+  <!doctype html>
+<html lang="en" ng-app="planner">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Project Planner</title>
+        <link rel="stylesheet" href="css/foundation.css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <style>[ng-cloak] {display: none}</style>
+    </head>
+
+    <body ng-controller="PlannerController">
+        <div class="row">
+          <div class="left">
+            <h1>Planner - {{plan.name}}</h1>
+
+            <form ng-submit="newMilestone()">
+              <input ng-model="newMilestoneName">
+              <button type="submit">new milestone</button>
+            </form>
+          </div>
+
+          <div  class="right">
+            <button ng-click="planSave()">save to browser</button>
+            <button ng-click="resetToDefault()">reset to default</button>
+            <button ng-click="cleanSlate()">clean the slate</button>
+          </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <form>
+                    <textarea rows="20" key-capture quick-entry ng-model="quickEntryModel">{{quickEntryModel}}</textarea>
+                </form>
+            </div>
+
+            <div class="six columns" ng-cloak>
+                <ol class="milestones">
+                    <li ng-repeat="milestone in plan.milestones">
+                        <h3>{{milestone.name}}</h3> <!--  - {{milestone.cost}}</h3> -->
+
+                        <ol class="tasks">
+                            <li ng-repeat="task in milestone.tasks">
+                                <span class="task-name">
+                                    {{task.name}}
+                                </span>
+
+                                <ul class="assignees">
+                                    <li ng-repeat="assignee in task.assignees">
+                                        <span class="assignee-name">
+                                            {{assignee.name}}
+                                        </span>
+                                        <span class="assignee-hours">
+                                            {{assignee.hours}}
+                                        </span>
+                                    </li>
+                                </ul>
+
+                                <ul class="disbursements">
+                                    <li ng-repeat="disbursement in task.disbursements">
+                                        <span class="disbursement-name">
+                                            {{disbursement.name}}
+                                        </span>
+                                        <span class="disbursement-amount">
+                                            {{disbursement.amount}}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+             </div>
+        </div>
+
+
+        <script src="lib/angular/angular.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/directives.js"></script>
+    </body>
+
+</html>
